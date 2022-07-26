@@ -12,7 +12,7 @@ if (!empty($_POST['sim'])) {
    $ida = $_POST['sim'];
 
    $testeDAO->remover($ida);
-   header('Location: index.php');
+   header('Location: index.php?alert=3');
 }
 
 ?>
@@ -29,42 +29,27 @@ if (!empty($_POST['sim'])) {
 </head>
 
 <body style="background-color:whitesmoke;">
-
    <?php
    if (!empty($_GET["alert"])) {
-      $alert = $_GET["alert"];
-      if ($alert == 1) {
    ?>
-         <div class="alert alert-success">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';"> <i style="font-size:16px" class="fa">&#xf00d;</i>
-            </span>
-            Adicionado Com Sucesso.
-         </div>
-
-      <?php
-      } else {
-      ?>
-         <div class="alert alert-info">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';"> <i style="font-size:16px" class="fa">&#xf00d;</i>
-            </span>
-            Atualizado Com Sucesso.
-         </div>
+      <div class="alert">
+         <span class="closebtn" onclick="this.parentElement.style.display='none';"> <i style="font-size:16px" class="fa">&#xf00d;</i>
+         </span>
+         <bold class="texto"> Adicionado Com Sucesso. </bold>
+      </div>
    <?php
-
-      }
    }
    ?>
+   <header class="d-flex m-2 p-3 justify-content-evenly" style="background-color:gray; border-radius: 4rem;">
 
-
-   <div class="d-flex m-2 p-3 justify-content-evenly" style="background-color:gray; border-radius: 4rem;">
-
-      <button type="button" class="btn btn-danger botaoInfo" onclick="sumir()">DELETAR</button>
+      <button type="button" class="btn btn-secondary botaoInfo">Teste</button>
 
       <img class="img-fluid prim logoUni" src="https://www.liquidworks.com.br/wp-content/themes/liquid/imagens/logo.png" style="height: 70px;">
 
       <button type="button" class="btn btn-success" onclick="window.location.href='cadastro.php'" style="color: white;">CADASTRO
       </button>
-   </div>
+
+   </header>
 
    <div class="m-4">
       <table class="table">
@@ -79,7 +64,7 @@ if (!empty($_POST['sim'])) {
                   <th scope="col">DATA</th>
                   <th scope="col">VALOR</th>
                   <th scope="col">ALTERAR</th>
-                  <th scope="col" class="visivil">DELETAR</th>
+                  <th scope="col">DELETAR</th>
                </tr>
             </thead>
             <tbody>
@@ -115,7 +100,7 @@ if (!empty($_POST['sim'])) {
 
                      </td>
 
-                     <td id="delete">
+                     <td>
                         <button type="submit" name="sim" value="<?php echo $row['id'] ?>" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                      </td>
                   </tr>
@@ -127,6 +112,24 @@ if (!empty($_POST['sim'])) {
    </div>
 
    <br>
+
+   <script>
+      var alert = <?php echo $_GET["alert"] ?>;
+      var element = document.querySelector('.alert');
+      var texto = element.querySelector('.texto');
+
+      if (alert == 1) {
+         element.classList.add('alert-success');
+      }
+      if (alert == 2) {
+         element.classList.add('alert-warning');
+         texto.textContent = " Atualizado Com Sucesso"
+      }
+      if (alert == 3) {
+         element.classList.add('alert-danger');
+         texto.textContent = " Removido Com Sucesso"
+      }
+   </script>
 
 </body>
 
