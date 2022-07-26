@@ -123,11 +123,11 @@ if (!empty($_POST['sim'])) {
       }
       if (alert == 2) {
          element.classList.add('alert-warning');
-         texto.textContent = " Atualizado Com Sucesso"
+         texto.textContent = "Dados Atualizado"
       }
       if (alert == 3) {
          element.classList.add('alert-danger');
-         texto.textContent = " Removido Com Sucesso"
+         texto.textContent = "Removido"
       }
    </script>
 
