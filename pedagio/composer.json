@@ -1,0 +1,24 @@
+{
+    "name": "liquidworks/pedagio",
+    "version" : "1.0.0",
+    "description": "Pedagio RekPay",
+    "type": "project",
+    "license": "2022 Liquidworks",
+    "authors": [
+        {
+            "name": "william",
+            "email": "william@liquidworks.com.br"
+        }
+    ],
+    "require": {
+        "adodb/adodb-php" : "*"
+    },
+    "autoload":{
+        "files": [
+            "config.php"
+        ],
+        "psr-4": {
+            "Pedagio\\": "classes"
+        }
+    }
+}
