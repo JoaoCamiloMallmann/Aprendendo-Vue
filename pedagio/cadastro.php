@@ -38,7 +38,7 @@ $testeDAO = new TesteDAO();
 
         <div class="mb-3 m-4">
             <label class="form-label" style="font-weight: bold">Data</label>
-            <input type="datetime-local" class="form-control" id="data" name="data" value="today">
+            <input type="datetime-local" class="form-control" id="data" name="data" value="">
         </div>
 
         <div class="mb-3 m-4">
@@ -57,61 +57,63 @@ $testeDAO = new TesteDAO();
 
 </body>
 
-<script src="main.js"></script>
+<script src="main.js">
+    < />
 
-<?php
-
-
-if (empty($_POST['nome'])) {
-    die;
-}
-if (empty($_POST['data'])) {
-    die;
-}
-
-if (empty($_POST['valor'])) {
-    die;
-}
+    <?php
 
 
+    if (empty($_POST['nome'])) {
+        die;
+    }
+    if (empty($_POST['data'])) {
+        die;
+    }
 
-if (empty($_GET["dado"])) {
-
-    $nome = $_POST['nome'];
-
-    $data = $_POST['data'];
-
-    $valor = $_POST['valor'];
-
-    $teste = new Teste();
-    $teste->setNome($nome);
-    $teste->setData(new DateTime($data));
-    $teste->setValor($valor);
-    $testeDAO->inserir($teste);
-    header('Location: index.php?alert=1');
-?>
-<?php
-} else {
-    $id = $_GET["dado"];
-
-    $dados = $testeDAO->buscarId($id);
-
-    $nome = $_POST['nome'];
-
-    $data = $_POST['data'];
-
-    $valor = $_POST['valor'];
-
-    $teste = new Teste();
-    $teste->setNome($nome);
-    $teste->setData(new DateTime($data));
-    $teste->setValor($valor);
-    $teste->setId($id);
-    $testeDAO->atualizar($teste);
-    header('Location: index.php?alert=2');
-}
+    if (empty($_POST['valor'])) {
+        die;
+    }
 
 
-?>
 
-</html>
+    if (empty($_GET["dado"])) {
+
+        $nome = $_POST['nome'];
+
+        $data = $_POST['data'];
+
+        $valor = $_POST['valor'];
+
+        $teste = new Teste();
+        $teste->setNome($nome);
+        $teste->setData(new DateTime($data));
+        $teste->setValor($valor);
+        $testeDAO->inserir($teste);
+        header('Location: index.php?alert=1');
+    ?>
+    <?php
+    } else {
+        $id = $_GET["dado"];
+
+        $dados = $testeDAO->buscarId($id);
+
+        $nome = $_POST['nome'];
+
+        $data = $_POST['data'];
+
+        $valor = $_POST['valor'];
+
+        $teste = new Teste();
+        $teste->setNome($nome);
+        $teste->setData(new DateTime($data));
+        $teste->setValor($valor);
+        $teste->setId($id);
+        $testeDAO->atualizar($teste);
+        header('Location: index.php?alert=2');
+    }
+
+
+    ?>
+
+        <
+        /html>

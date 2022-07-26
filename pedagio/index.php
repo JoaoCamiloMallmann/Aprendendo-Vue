@@ -26,18 +26,6 @@ if (!empty($_POST['sim'])) {
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
    <script src="https://kit.fontawesome.com/e58a676b39.js" crossorigin="anonymous"></script>
-   <style>
-      .visivil {
-         display: none;
-      }
-   </style>
-   <script>
-      function sumir() {
-         var x = document.getElementById("delete");
-         x.classList.toggle("visivil");
-      }
-   </script>
-
 </head>
 
 <body style="background-color:whitesmoke;">
@@ -91,7 +79,7 @@ if (!empty($_POST['sim'])) {
                   <th scope="col">DATA</th>
                   <th scope="col">VALOR</th>
                   <th scope="col">ALTERAR</th>
-                  <th scope="col" id="delete" class="visivil">DELETAR</th>
+                  <th scope="col" class="visivil">DELETAR</th>
                </tr>
             </thead>
             <tbody>
