@@ -27,13 +27,19 @@ if (!empty($_POST['sim'])) {
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
    <script src="https://kit.fontawesome.com/e58a676b39.js" crossorigin="anonymous"></script>
 </head>
+<style>
+   .visible{
+      display: none;
+   }
+</style>
 
 <body style="background-color:whitesmoke;">
+
    <?php
    if (!empty($_GET["alert"])) {
    ?>
       <div class="alert">
-         <span class="closebtn" onclick="this.parentElement.style.display='none';"> <i style="font-size:16px" class="fa">&#xf00d;</i>
+         <span class="closebtn" onclick=""> <i style="font-size:16px" class="fa">&#xf00d;</i>
          </span>
          <bold class="texto"> Adicionado Com Sucesso. </bold>
       </div>
@@ -42,7 +48,7 @@ if (!empty($_POST['sim'])) {
    ?>
    <header class="d-flex m-2 p-3 justify-content-evenly" style="background-color:gray; border-radius: 4rem;">
 
-      <button type="button" class="btn btn-secondary botaoInfo">Teste</button>
+      <button type="button" class="btn btn-secondary btnclick"></button>
 
       <img class="img-fluid prim logoUni" src="https://www.liquidworks.com.br/wp-content/themes/liquid/imagens/logo.png" style="height: 70px;">
 
@@ -64,7 +70,7 @@ if (!empty($_POST['sim'])) {
                   <th scope="col">DATA</th>
                   <th scope="col">VALOR</th>
                   <th scope="col">ALTERAR</th>
-                  <th scope="col">DELETAR</th>
+                  <th scope="col" id="deletar">DELETAR</th>
                </tr>
             </thead>
             <tbody>
@@ -100,7 +106,7 @@ if (!empty($_POST['sim'])) {
 
                      </td>
 
-                     <td>
+                     <td id="deletar">
                         <button type="submit" name="sim" value="<?php echo $row['id'] ?>" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                      </td>
                   </tr>
@@ -110,8 +116,20 @@ if (!empty($_POST['sim'])) {
       </table>
 
    </div>
+   <script>
+      var btn2 = document.querySelector('.btnclick');
+      btn2.onclick = function() {
 
-   <br>
+         var id = document.querySelectorAll('#deletar');
+         console.log(id);
+
+         id.forEach(element => {
+            console.log(element);
+            element.classList.toggle('visible');
+         });
+
+      }
+   </script>
 
    <script>
       var alert = <?php echo $_GET["alert"] ?>;
@@ -123,11 +141,11 @@ if (!empty($_POST['sim'])) {
       }
       if (alert == 2) {
          element.classList.add('alert-warning');
-         texto.textContent = "Dados Atualizado"
+         texto.textContent = " Atualizado Com Sucesso"
       }
       if (alert == 3) {
          element.classList.add('alert-danger');
-         texto.textContent = "Removido"
+         texto.textContent = " Removido Com Sucesso"
       }
    </script>
 
