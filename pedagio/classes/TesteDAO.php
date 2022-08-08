@@ -4,6 +4,7 @@ namespace Pedagio;
 
 use DateTime;
 
+
 class TesteDAO extends Conexao
 {
     public function __construct()
@@ -12,7 +13,7 @@ class TesteDAO extends Conexao
     }
     public function listar(): array
     {
-        $query = "SELECT id, nome, valor, data from teste";
+        $query = "SELECT id, nome, valor, data, cpf, numeroDeTelefone from teste";
         $rs = $this->getConexao()->Execute($query);
         if ($rs && $rs->RecordCount()) {
             return $rs->getAll();
@@ -22,13 +23,15 @@ class TesteDAO extends Conexao
 
     public function atualizar(Teste $teste): bool
     {
-        $query = "UPDATE teste SET  nome =  ?, data = ?, valor = ?  
-        WHERE id = ? ";
+        $query = "UPDATE teste SET  nome =  ?, data = ?, valor = ?, cpf = ?, numeroDeTelefone = ?  
+        WHERE id = ?; ";
         $bind =
             [
                 $teste->getNome(),
                 $teste->getData()->format("Y-m-d H:i:s"),
                 $teste->getValor(),
+                $teste->getCpf(),
+                $teste->getNumeroDeTelefone(),
                 $teste->getId(),
             ];
         if (!$this->getConexao()->Execute($query, $bind)) {
@@ -70,20 +73,41 @@ class TesteDAO extends Conexao
             $teste->setNome($row['nome']);
             $teste->setData(new DateTime($row['data']));
             $teste->setValor($row['valor']);
+            $teste->setCpf($row['cpf']);
+            $teste->setNumeroDeTelefone($row['numeroDeTelefone']);
               
         }
         return $teste;
     }
 
+    public function buscarCpf ($cpf): Teste
+    {
+        $query = "SELECT * FROM teste
+        WHERE cpf = ?;";
+        $bind = 
+        [
+            $cpf,
+        ];
+        $rs = $this->getConexao()->Execute($query, $bind);
+        $teste = new Teste();
+        if ($rs && $rs->RecordCount() > 0) {
+            $row = $rs->fetchRow();
+            $teste->carregarObjeto($row);
+        }
+        return $teste;
+    }
+    
     public function inserir(Teste $teste): bool
     {
-        $query = "INSERT INTO teste (nome, data, valor)
-        VALUES (?,?,?);";
+        $query = "INSERT INTO teste (nome, data, valor, cpf, numeroDeTelefone)
+        VALUES (?,?,?,?,?)";
         $bind =
             [
                 $teste->getNome(),
                 $teste->getData()->format("Y-m-d H:i:s"),
-                $teste->getValor()
+                $teste->getValor(),
+                $teste->getCpf(),
+                $teste->getNumeroDeTelefone(),
             ];
         if (!$this->getConexao()->Execute($query, $bind)) 
         {

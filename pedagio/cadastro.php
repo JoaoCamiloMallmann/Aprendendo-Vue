@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('America/Sao_Paulo');
+
 use Pedagio\Conexao;
 use Pedagio\Teste;
 use Pedagio\TesteDAO;
@@ -7,57 +9,63 @@ use Pedagio\TesteDAO;
 require_once "vendor/autoload.php";
 
 $testeDAO = new TesteDAO();
+$hoje = time();
+$dataHoje = date('Y-m-d H:i:s', $hoje);
+
+if (isset($_GET["dado"])) {
+    $resultado = $testeDAO->buscarId($_GET["dado"]);
+}
+
+require_once 'inc\header.php';
 
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>Cadastro</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap" rel="stylesheet">
-    <script src="jquery-3.6.0.min.js"></script>
-    <script src="alert/dist/sweetalert-dev.js"></script>
-</head>
 
 <body style="background-color:whitesmoke;">
 
-    <h2 id="tituloMain" style="text-align: center; color: lightgreen; text-shadow: 2px 2px 3px black;">CADASTRO</h2>
+    <h2 id="tituloMain" style="text-align: center; color: lightgreen; text-shadow: 2px 2px 5px black;">CADASTRO</h2>
     <form action="" method="post">
 
         <div class="mb-3 m-4">
             <label class="form-label" style="font-weight: bold;">Nome</label>
-            <input type="texte" class="form-control" name="nome" id="nome">
+            <input type="texte" class="form-control" name="nome" id="nome" placeholder="Nome Completo" <?php if (isset($resultado)) echo "value='" . $resultado->getNome() . "'" ?>>
         </div>
 
         <div class="mb-3 m-4">
             <label class="form-label" style="font-weight: bold">Data</label>
-            <input type="datetime-local" class="form-control" id="data" name="data" value="today">
+            <input type="datetime-local" class="form-control" id="data" name="data" value="<?php ?>">
         </div>
 
         <div class="mb-3 m-4">
             <label class="form-label" style="font-weight: bold;">Valor</label>
-            <input type="number" class="form-control" id="valor" name="valor">
+            <input type="number" class="form-control" id="valor" name="valor" placeholder="R$ 0000" <?php if (isset($resultado)) echo "value='" . $resultado->getValor() . "'" ?>>
         </div>
+
+        <div class="mb-3 m-4">
+            <label class="form-label" style="font-weight: bold;">CPF</label>
+            <input type='text' id='cpfInput' placeholder='000.000.000-00' oninput='cpfChange(this.value)' class="form-control" name="cpf" <?php if (isset($resultado)) echo "value='" . $resultado->getCpf() . "'" ?>>
+        </div>
+
+        <div class="mb-3 m-4">
+            <label class="form-label" style="font-weight: bold;">Numero De Telefone</label>
+            <input type="text" class="form-control telefone" id="valor" name="telefone" placeholder="(00) 00000-0000" <?php if (isset($resultado)) echo "value='" . $resultado->getNumeroDeTelefone() . "'" ?>>
+        </div>
+
 
         <button type="submit" name="" id="Submit" value="Submit" class="btn btn-success p-2 m-4">Enviar</button>
 
     </form>
 
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center m-3">
         <button type="button" class="btn btn-info" style="color: white;" onclick="window.location.href='index.php'">VOLTAR</button>
     </div>
 
 
 </body>
 
-<script src="main.js"></script>
+<script src="Javascript/atualizaCadastro.js"></script>
+<script src="Javascript/cpfFormat.js"></script>
+<script src="Javascript/telefoneFormat.js"></script>
 
 <?php
 
@@ -68,23 +76,33 @@ if (empty($_POST['data'])) {
     die;
 }
 
+if (empty($_POST['cpf'])) {
+    die;
+}
+
 if (empty($_POST['valor'])) {
     die;
 }
 
+if (empty($_POST['telefone'])) {
+    die;
+}
 
 if (empty($_GET["dado"])) {
 
     $nome = $_POST['nome'];
-
     $data = $_POST['data'];
-
     $valor = $_POST['valor'];
+    $telefone = $_POST['telefone'];
+    $cpf = $_POST['cpf'];
+
 
     $teste = new Teste();
     $teste->setNome($nome);
     $teste->setData(new DateTime($data));
     $teste->setValor($valor);
+    $teste->setCpf($cpf);
+    $teste->setNumeroDeTelefone($telefone);
     $testeDAO->inserir($teste);
     header('Location: index.php?alert=1');
 ?>
@@ -95,20 +113,25 @@ if (empty($_GET["dado"])) {
     $dados = $testeDAO->buscarId($id);
 
     $nome = $_POST['nome'];
-
     $data = $_POST['data'];
-
     $valor = $_POST['valor'];
+    $telefone = $_POST['telefone'];
+    $cpf = $_POST['cpf'];
+
 
     $teste = new Teste();
     $teste->setNome($nome);
     $teste->setData(new DateTime($data));
     $teste->setValor($valor);
+    $teste->setCpf($cpf);
     $teste->setId($id);
+    $teste->setNumeroDeTelefone($telefone);
+    var_dump($teste);
     $testeDAO->atualizar($teste);
     header('Location: index.php?alert=2');
 }
 
 ?>
+<script src="inc\Bootstrap\css\bootstrap.min.css"></script>
 
 </html>

@@ -15,14 +15,20 @@ foreach ($lista as $row) {
 }
 echo ("FIM DA LISTA----------------------------------<br><br>");
 
-echo "ATUALIZANDO ID 2----------------------------------<br><br>";
+echo "ATUALIZANDO ID ----------------------------------<br><br>";
 $teste = new Teste();
-$teste->setNome('Carlos');
-$teste->setData(new DateTime("2030-06-06 03:03:03"));
-$teste->setValor(2930);
-$teste->setId(49);
+$teste->setNome('Uelinto');
+$teste->setData(new DateTime("2019-03-12 03:45:12"));
+$teste->setValor(365);
+$teste->setCpf('123.321.231-12');
+$teste->setNumeroDeTelefone('99999999999');
+$teste->setId(70);
 $atualizar = $testeDAO->atualizar($teste);
+
+
 echo "FIM----------------------------------<br><br>";
+
+echo "Buscar id----------------------------------<br><br>";
 
 $buscarId = $testeDAO->buscarId(49);
 $buscarId->getTodos();
@@ -34,10 +40,15 @@ foreach ($lista as $row) {
 
 function imprimir($row)
 {
-   echo ($row['nome'] . " " . $row['valor']) . " " . $row['data'] . " " . $row['id'] . "<br>";
+   echo ($row['nome'] . " " . $row['valor']) . " " . $row['data'] . " " . $row['id'] . " " . $row['cpf'] . " " . 
+   $row['numeroDeTelefone'] . "<br>";
 }
 
-$buscarNome = $testeDAO->buscarNome('Rober');
+echo "FIM----------------------------------<br><br>";
+
+echo "Buscar nome----------------------------------<br><br>";
+
+$buscarNome = $testeDAO->buscarNome('Uel');
 $buscarNome->getTodos();
 echo "<br><br>";
 
@@ -45,10 +56,23 @@ foreach ($lista as $row) {
    imprimir($row);
 }
 
+echo "FIM----------------------------------<br><br>";
+
+echo "Buscar cpf----------------------------------<br><br>";
+$buscarCpf = $testeDAO->buscarCpf('111.111.111-11');
+$buscarCpf->getTodos();
+echo "<br><br>";
+
+echo "FIM----------------------------------<br><br>";
+
 /*$teste = new Teste();
-$teste->setNome('Testando');
-$teste->setData(new DateTime("2030-03-03 03:03:03"));
-$teste->setValor(456);
+$teste->setNome('Thanos');
+$teste->setData(new DateTime("2016-11-20 19:13:18"));
+$teste->setValor(189);
+$teste->setCpf('019.609.195-02');
+$teste->setnumeroDeTelefone('61997286483');
 $inserir = $testeDAO->inserir($teste);*/
 
-$deletar = $testeDAO->remover('35');
+/*echo $inserir;*/
+
+/*$deletar = $testeDAO->remover('35');*/

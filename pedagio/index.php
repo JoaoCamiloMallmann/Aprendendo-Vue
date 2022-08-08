@@ -8,47 +8,39 @@ require_once "vendor/autoload.php";
 $testeDAO = new TesteDAO();
 $lista = $testeDAO->listar();
 
-if (!empty($_POST['sim'])) {
-   $ida = $_POST['sim'];
 
-   $testeDAO->remover($ida);
-   header('Location: index.php?alert=3');
-}
-
+require_once 'inc\header.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-   <script src="https://kit.fontawesome.com/e58a676b39.js" crossorigin="anonymous"></script>
-</head>
 <style>
-   .visible{
+   .visible {
       display: none;
+   }
+
+   .alert span:hover {
+      cursor: pointer;
+   }
+
+   #deletar {
+      text-align: center;
    }
 </style>
 
-<body style="background-color:whitesmoke;">
+<body style="background-color: #e5e7eb;">
 
    <?php
    if (!empty($_GET["alert"])) {
    ?>
-      <div class="alert">
-         <span class="closebtn" onclick=""> <i style="font-size:16px" class="fa">&#xf00d;</i>
-         </span>
-         <bold class="texto"> Adicionado Com Sucesso. </bold>
+      <div class="alert position-absolute top-0" style=" width: 25%; right: 40%;   text-align: center;">
+         <bold class="texto" style="font-size: 20px;"> Adicionado Com Sucesso </bold>
       </div>
    <?php
    }
    ?>
-   <header class="d-flex m-2 p-3 justify-content-evenly" style="background-color:gray; border-radius: 4rem;">
+   <header class="d-flex m-2 p-3" style="background-color: #333333; border-radius: 4rem; justify-content: space-evenly;">
 
-      <button type="button" class="btn btn-secondary btnclick"></button>
+      <button type="button" class="btn btn-danger btnclick">DELETAR</button>
+
 
       <img class="img-fluid prim logoUni" src="https://www.liquidworks.com.br/wp-content/themes/liquid/imagens/logo.png" style="height: 70px;">
 
@@ -57,98 +49,30 @@ if (!empty($_POST['sim'])) {
 
    </header>
 
-   <div class="m-4">
-      <table class="table">
-         <form action="" method="POST">
 
-            <h1 style="text-align: center;">LISTA DE DADOS</h1>
 
-            <thead class="m-2">
-               <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">NOME</th>
-                  <th scope="col">DATA</th>
-                  <th scope="col">VALOR</th>
-                  <th scope="col">ALTERAR</th>
-                  <th scope="col" id="deletar">DELETAR</th>
-               </tr>
-            </thead>
-            <tbody>
+   <script src="Javascript/master.js"></script>
 
-               <?php foreach ($lista as $row) { ?>
-
-                  <tr>
-                     <th scope="row">
-                        <?php
-                        echo $row['id']
-                        ?>
-                        </td>
-                     </th>
-
-                     <td> <?php
-                           echo $row['nome']
-                           ?> </td>
-                     <td> <?php
-                           echo $row['data']
-                           ?>
-                     </td>
-
-                     <td> <?php
-                           echo $row['valor']
-                           ?>
-                     </td>
-                     <td>
-                        <button type="button" class="btn btn-info">
-                           <a href="cadastro.php?dado=<?php echo $row['id'] ?>" style="text-decoration:none; color:white;">
-                              <i class="fas fa-info-circle" style="color: white;"></i>
-                           </a>
-                        </button>
-
-                     </td>
-
-                     <td id="deletar">
-                        <button type="submit" name="sim" value="<?php echo $row['id'] ?>" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                     </td>
-                  </tr>
-               <?php } ?>
-            </tbody>
-         </form>
-      </table>
+   <div class="result"></div>
 
    </div>
-   <script>
-      var btn2 = document.querySelector('.btnclick');
-      btn2.onclick = function() {
 
-         var id = document.querySelectorAll('#deletar');
-         console.log(id);
+   <script src="Javascript/btnDelete.js"></script>
+   <script src="Javascript/alertaIndex.js"></script>
 
-         id.forEach(element => {
-            console.log(element);
-            element.classList.toggle('visible');
-         });
+   <div class="d-flex m-4 botoes" style="align-items: center; justify-content: space-around;">
+      <button type="button" class="btn" onclick="window.location.href='gitpage.php'" style="color: white; background-color: #6cc644;"><img src="https://logos-world.net/wp-content/uploads/2020/11/GitHub-Emblem.png" style=" height: 40px;  ">
+      </button>
 
-      }
-   </script>
+      <button id="deletar" type="button" class="btn btn-danger visible apagarTudo" style="height: 70px;">
+         <i class="fa-solid fa-triangle-exclamation"></i> <BR> APAGAR TUDO</BR>
+      </button>
 
-   <script>
-      var alert = <?php echo $_GET["alert"] ?>;
-      var element = document.querySelector('.alert');
-      var texto = element.querySelector('.texto');
-
-      if (alert == 1) {
-         element.classList.add('alert-success');
-      }
-      if (alert == 2) {
-         element.classList.add('alert-warning');
-         texto.textContent = " Atualizado Com Sucesso"
-      }
-      if (alert == 3) {
-         element.classList.add('alert-danger');
-         texto.textContent = " Removido Com Sucesso"
-      }
-   </script>
 
 </body>
+<script src="inc\jquery.js"></script>
+<script src="master.js"></script>
+
+
 
 </html>
