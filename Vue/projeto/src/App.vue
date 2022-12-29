@@ -1,6 +1,7 @@
 <template>
   <div id="fundo">
     <PrimeiroComponente />
+    <hr>
     <Lifecycle />
 
     <p>

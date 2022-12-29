@@ -1,5 +1,8 @@
 <template>
   <main>
+    <span>
+      {{ CompEmail }}
+    </span>
     <p v-if="esta_trabalhando">Estou trabalhando</p>
     <p v-else>Buscando por oportunidades, listar:</p>
 
@@ -20,7 +23,6 @@
         <button @click="showEmail">Click aqui</button>
       </div>
     </div>
-    
   </main>
 </template>
 
@@ -32,7 +34,6 @@ export default {
 
   data() {
     return {
-      esta_trabalhando: true,
       mostrar_email: false,
       meu_link: "https://runrun.it/pt-BR/boards/",
       lista: ["Python", "java", "HTML", "PHP"],
@@ -43,6 +44,10 @@ export default {
         { id: 4, language: "PHP" },
       ],
     };
+  },
+  props: {
+    CompEmail: String,
+    esta_trabalhando: Boolean,
   },
   components: {
     PessoaFoto,
