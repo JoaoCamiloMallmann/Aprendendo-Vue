@@ -27,7 +27,6 @@ export default {
 
       console.log(nome);
       console.log(email);
-      
     },
   },
 };

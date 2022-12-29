@@ -1,28 +1,31 @@
 <template>
-  <h1>meu nome é :{{ nome }}</h1>
+  <h1>Esse é seu numero da sorte :{{ numero }}</h1>
 </template>
 
 <script>
 export default {
   name: "LifeCycle",
 
+  methods: {
+    setaNumero() {
+      this.numero = Math.ceil(Math.random() * 10);
+    },
+  },
+
   data() {
     return {
-      nome: "ainda nao sei",
+      numero: "",
     };
   },
+
   created() {
-    this.nome = "mario";
+    this.numero = Math.ceil(Math.random() * 10);
   },
+
   mounted() {
     setTimeout(() => {
-      this.nome = "jose";
-    }, 5000);
-  },
-  methods: {
-    olamundo() {
-      console.log("oi");
-    },
+      this.numero = Math.ceil(Math.random() * 10);
+    }, 3000);
   },
 };
 </script>

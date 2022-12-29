@@ -1,6 +1,6 @@
 <template>
-  <h1>Olá Vue</h1>
-  <p>Meu nome é {{ nome }} e sou {{ trabalho }}</p>
+  <h1>Vue - Framework</h1>
+  <p>Esse site foi feito por {{ nome }} para ser aplicado em futuros projetos da  {{ trabalho }}</p>
 </template>
 
 
@@ -10,8 +10,8 @@ export default {
 
   data() {
     return {
-      nome: "joao",
-      trabalho: "Programador",
+      nome: "Joao",
+      trabalho: "Liquid",
     };
   },
 };
