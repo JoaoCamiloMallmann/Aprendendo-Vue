@@ -17,7 +17,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.nome = "jose";
-    }, 1000);
+    }, 5000);
   },
 };
 </script>
