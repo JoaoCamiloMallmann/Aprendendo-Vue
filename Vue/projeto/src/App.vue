@@ -1,12 +1,14 @@
 <template>
-  <PrimeiroComponente />
-  <Lifecycle />
+  <div id="fundo">
+    <PrimeiroComponente />
+    <Lifecycle />
 
-  <p>
-    {{ dados }}
-  </p>
+    <p>
+      {{ dados }}
+    </p>
 
-  <PessoaTeste />
+    <PessoaTeste />
+  </div>
 </template>
 
 
@@ -25,7 +27,16 @@ export default {
   components: {
     PrimeiroComponente,
     Lifecycle,
+
     PessoaTeste,
   },
 };
 </script>
+
+<style>
+body{
+  margin: 0;
+  padding:0;
+}
+
+</style>
