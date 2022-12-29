@@ -12,7 +12,10 @@
     <a v-bind:href="meu_link"> <p>Click Aqui</p> </a>
 
     <PessoaFoto />
-    
+
+    <div>
+      <button @click="showEmail">Click aqui</button>
+    </div>
   </div>
 </template>
 
@@ -31,6 +34,11 @@ export default {
   },
   components: {
     PessoaFoto,
+  },
+  methods: {
+    showEmail() {
+      this.mostrar_email = !this.mostrar_email;
+    },
   },
 };
 </script>

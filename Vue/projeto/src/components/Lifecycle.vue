@@ -13,11 +13,18 @@ export default {
   },
   created() {
     this.nome = "mario";
+    this.olamundo();
   },
   mounted() {
+    this.olamundo();
     setTimeout(() => {
       this.nome = "jose";
     }, 5000);
+  },
+  methods: {
+    olamundo() {
+      console.log("oi");
+    },
   },
 };
 </script>
