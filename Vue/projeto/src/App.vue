@@ -34,9 +34,13 @@ export default {
 </script>
 
 <style>
-body{
+body {
+  background-color: darkslategray;
+  color: white;
   margin: 0;
-  padding:0;
+  padding: 0;
 }
-
+a {
+  color: white;
+}
 </style>
