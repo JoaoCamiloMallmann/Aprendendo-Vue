@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <button @click="Primeiro($event), Segundo($event)">
@@ -27,6 +28,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>
