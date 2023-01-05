@@ -79,51 +79,57 @@
     {
       "id": 3,
       "tipo": "Finalizado"
-    },
-    {
-      "codigoDispositivo": 22,
-      "chave": "LCU+Y4y6OxON(,20?i.)-&[dGJ[I}E",
-      "dados": {
-        "tipoVeiculo": 4
-      },
-      "id": 4
     }
   ],
   "burgers": [
-    {
-      "nome": "caho",
-      "carne": "Alcatra",
-      "pao": "Integral",
-      "status": "Solicitado",
-      "id": 5
-    },
     {
       "nome": "jooa",
       "carne": "Maminha",
       "pao": "Italiano Branco",
       "status": "Solicitado",
-      "id": 6
+      "id": 1
     },
     {
       "nome": "mario",
       "carne": "Veggie burger",
       "pao": "Integral",
       "status": "Solicitado",
-      "id": 7
+      "id": 2
     },
     {
       "nome": "jose",
       "carne": "Picanha",
       "pao": "Italiano Branco",
       "status": "Solicitado",
-      "id": 8
+      "id": 3
     },
     {
-      "nome": "PHP",
-      "carne": "Picanha",
+      "nome": "Joaozinho",
+      "carne": "Alcatra",
       "pao": "3 Queijos",
       "status": "Solicitado",
-      "id": 9
+      "id": 4
+    },
+    {
+      "nome": "caho",
+      "carne": "",
+      "pao": "",
+      "status": "Solicitado",
+      "id": 5
+    },
+    {
+      "nome": "RekPay",
+      "carne": "Alcatra",
+      "pao": "3 Queijos",
+      "status": "Solicitado",
+      "id": 6
+    },
+    {
+      "nome": "cacho",
+      "carne": "Alcatra",
+      "pao": "Integral",
+      "status": "Solicitado",
+      "id": 7
     }
   ]
 }

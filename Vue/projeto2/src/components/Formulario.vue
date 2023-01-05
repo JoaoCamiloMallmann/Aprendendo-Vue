@@ -1,6 +1,6 @@
 <template>
   <span></span>
-  <form action="POST" id="formulario" ref="form" @submit="setHamburguer">
+  <form action="POST" id="formulario" @submit="setHamburguer">
     <div class="formularioParte">
       <label for="name"> Nome: </label>
       <input type="text" name="name" v-model="nome" />
@@ -84,7 +84,7 @@ export default {
         .post("http://localhost:3000/burgers", data)
         .then(function (response) {
           console.log(response);
-          this.$refs.form.reset();
+          document.getElementById("formulario").reset();
         })
         .catch(function (error) {
           console.log(error);
