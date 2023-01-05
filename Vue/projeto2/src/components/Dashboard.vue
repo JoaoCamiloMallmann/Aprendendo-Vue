@@ -72,16 +72,18 @@ export default {
 
     async updateBurger(event, id) {
       const option = event.target.value;
-      console.log(option);
+
       const dados = JSON.stringify({ status: option });
 
-      const req = await fetch(`http://localhost:3000/burgers/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application JSON" },
-        body: dados,
+      axios({
+        method: "patch",
+        url: `http://localhost:3000/burgers/${id}`,
+        data: {
+          status: option,
+        },
+      }).then(function (response) {
+        console.log(resposnse);
       });
-      const res = await req.json();
-      console.log(res);
     },
   },
   mounted() {
