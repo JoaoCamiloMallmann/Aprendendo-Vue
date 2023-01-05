@@ -1,6 +1,6 @@
 <template>
   <span></span>
-  <form action="POST" id="formulario" @submit="setHamburguer">
+  <form action="POST" id="formulario" ref="form" @submit="setHamburguer">
     <div class="formularioParte">
       <label for="name"> Nome: </label>
       <input type="text" name="name" v-model="nome" />
@@ -76,6 +76,9 @@ export default {
       });
       const res = await req.json();
       console.log(res);
+
+      this.$refs.form.reset();
+
     },
   },
 
