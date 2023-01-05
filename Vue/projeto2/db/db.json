@@ -91,13 +91,39 @@
   ],
   "burgers": [
     {
-      "id": 1
+      "nome": "caho",
+      "carne": "Alcatra",
+      "pao": "Integral",
+      "status": "Solicitado",
+      "id": 5
     },
     {
-      "id": 2
+      "nome": "jooa",
+      "carne": "Maminha",
+      "pao": "Italiano Branco",
+      "status": "Solicitado",
+      "id": 6
     },
     {
-      "id": 3
+      "nome": "mario",
+      "carne": "Veggie burger",
+      "pao": "Integral",
+      "status": "Solicitado",
+      "id": 7
+    },
+    {
+      "nome": "jose",
+      "carne": "Picanha",
+      "pao": "Italiano Branco",
+      "status": "Solicitado",
+      "id": 8
+    },
+    {
+      "nome": "PHP",
+      "carne": "Picanha",
+      "pao": "3 Queijos",
+      "status": "Solicitado",
+      "id": 9
     }
   ]
 }

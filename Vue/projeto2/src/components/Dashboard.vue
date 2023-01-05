@@ -9,15 +9,16 @@
         <div>Ações:</div>
       </div>
     </div>
-    <div id="burger-table-rows">
+
+    <div id="burger-table-rows" v-for="burger in burgers" :key="burger.id">
       <div class="burger-table-row">
-        <div class="order-number">1</div>
-        <div>nome3</div>
-        <div>pao</div>
-        <div>carne</div>
+        <div class="order-number">{{ burger.id }}</div>
+        <div>{{ burger.nome }}</div>
+        <div>{{ burger.pao }}</div>
+        <div>{{ burger.carne }}</div>
         <div>
           <select name="status" class="status">
-            <option>yrdyr</option>
+            <option>Selecione</option>
           </select>
           <button class="delete-btn">Cancelar</button>
         </div>
