@@ -12,21 +12,18 @@
     <div id="burger-table-rows">
       <div class="burger-table-row">
         <div class="order-number">1</div>
-        <div>jc</div>
+        <div>nome3</div>
         <div>pao</div>
         <div>carne</div>
         <div>
           <select name="status" class="status">
-            <option>
-              yrdyr
-            </option>
+            <option>yrdyr</option>
           </select>
           <button class="delete-btn">Cancelar</button>
         </div>
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -37,24 +34,20 @@ export default {
       burgers: null,
       burgers_id: null,
       status: [],
-    }
+    };
   },
   methods: {
     async getPedidos() {
-      const req = await fetch('http://localhost:3000/burgers');
-      const data = await req.json()
+      const req = await fetch("http://localhost:3000/burgers");
+      const data = await req.json();
       this.burgers = data;
-      console.log(data)
-
-    }
-
+      console.log(data);
+    },
   },
   mounted() {
     this.getPedidos();
-  }
-
-}
-
+  },
+};
 </script>
 
 <style scoped>
@@ -79,7 +72,7 @@ export default {
 .burger-table-row {
   width: 100%;
   padding: 12px;
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #ccc;
 }
 
 #burger-table-heading div,
@@ -106,7 +99,7 @@ select {
   font-size: 16px;
   margin: 0 auto;
   cursor: pointer;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .delete-btn:hover {
