@@ -39,12 +39,10 @@ export default {
     return {
       paes: "",
       carnes: "",
-      //opcionaisdata: "",
 
       nome: null,
       carne: "",
       pao: "",
-      //   opcionais: [],
 
       status: "Solicitado",
       msg: "",
@@ -57,7 +55,6 @@ export default {
 
       this.paes = data.paes;
       this.carnes = data.carnes;
-      //this.opcionaisdata = data.opcionais;
     },
     async setHamburguer(e) {
       e.preventDefault();
@@ -69,7 +66,6 @@ export default {
         status: this.status,
       };
       /*
-
       const req = await fetch("http://localhost:3000/burgers", {
         method: "POST",
         headers: { "Content-Type": "application JSON" },
@@ -90,6 +86,7 @@ export default {
           console.log(error);
         });
     },
+    
   },
 
   mounted() {

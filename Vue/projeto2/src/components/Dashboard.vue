@@ -17,7 +17,11 @@
         <div>{{ burger.pao }}</div>
         <div>{{ burger.carne }}</div>
         <div>
-          <select name="status" class="status">
+          <select
+            name="status"
+            class="status"
+            @change="updateBurger($event, burger.id)"
+          >
             <option value="Selecione">Selecione</option>
             <option
               v-for="s in status"
@@ -64,6 +68,20 @@ export default {
       });
       const res = await req.json();
       this.getPedidos();
+    },
+
+    async updateBurger(event, id) {
+      const option = event.target.value;
+      console.log(option);
+      const dados = JSON.stringify({ status: option });
+
+      const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application JSON" },
+        body: dados,
+      });
+      const res = await req.json();
+      console.log(res);
     },
   },
   mounted() {
