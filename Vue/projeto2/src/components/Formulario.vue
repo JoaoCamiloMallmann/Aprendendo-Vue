@@ -61,13 +61,14 @@ export default {
     },
     async setHamburguer(e) {
       e.preventDefault();
+
       let data = {
         nome: this.nome,
         carne: this.carne,
         pao: this.pao,
         status: this.status,
       };
-      const dados = JSON.stringify(data);
+      /*
 
       const req = await fetch("http://localhost:3000/burgers", {
         method: "POST",
@@ -78,7 +79,16 @@ export default {
       console.log(res);
 
       this.$refs.form.reset();
-
+      */
+      axios
+        .post("http://localhost:3000/burgers", data)
+        .then(function (response) {
+          console.log(response);
+          this.$refs.form.reset();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
   },
 
