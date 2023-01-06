@@ -81,41 +81,5 @@
       "tipo": "Finalizado"
     }
   ],
-  "burgers": [
-    {
-      "nome": "jose",
-      "carne": "Picanha",
-      "pao": "Italiano Branco",
-      "status": "Em produção",
-      "id": 3
-    },
-    {
-      "nome": "Joaozinho",
-      "carne": "Alcatra",
-      "pao": "3 Queijos",
-      "status": "Solicitado",
-      "id": 4
-    },
-    {
-      "nome": "caho",
-      "carne": "",
-      "pao": "",
-      "status": "Selecione",
-      "id": 5
-    },
-    {
-      "nome": "RekPay",
-      "carne": "Alcatra",
-      "pao": "3 Queijos",
-      "status": "Solicitado",
-      "id": 6
-    },
-    {
-      "nome": "cacho",
-      "carne": "Alcatra",
-      "pao": "Integral",
-      "status": "Finalizado",
-      "id": 7
-    }
-  ]
+  "burgers": []
 }

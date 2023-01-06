@@ -1,4 +1,5 @@
 <template>
+  <Message :msg="msg" />
   <div id="burger-table">
     <div>
       <div id="burger-table-heading">
@@ -42,6 +43,8 @@
 </template>
 
 <script>
+import Message from "./Message.vue";
+
 export default {
   name: "Dashboard",
   data() {
@@ -49,7 +52,11 @@ export default {
       burgers: null,
       burgers_id: null,
       status: [],
+      msg: null,
     };
+  },
+  components: {
+    Message,
   },
   methods: {
     async getPedidos() {
@@ -67,6 +74,11 @@ export default {
         method: "DELETE",
       });
       const res = await req.json();
+
+      this.msg = "Pedido " + id + " Foi Deleteado";
+      setTimeout(() => {
+        this.msg = "";
+      }, 3000);
       this.getPedidos();
     },
 
