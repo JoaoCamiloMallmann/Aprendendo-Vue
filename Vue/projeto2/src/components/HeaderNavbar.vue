@@ -7,6 +7,9 @@
     <router-link to="/">Home</router-link>
 
     <router-link to="/Pedidos">Pedidos</router-link>
+
+    <router-link to="/Tela">Tela</router-link>
+
   </div>
 </template>
 

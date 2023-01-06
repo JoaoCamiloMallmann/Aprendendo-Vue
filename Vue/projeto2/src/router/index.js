@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import Pedidos from "../views/PedidoView.vue";
+import PedidosView from "../views/PedidoView.vue";
+import TelaView from "../views/TelaView.vue";
 
 const routes = [
   {
@@ -11,7 +12,12 @@ const routes = [
   {
     path: "/Pedidos",
     name: "Pedidos",
-    component: Pedidos,
+    component: PedidosView,
+  },
+  {
+    path: "/Tela",
+    name: "Tela",
+    component: TelaView,
   },
 ];
 

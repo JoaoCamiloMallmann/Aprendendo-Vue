@@ -64,11 +64,13 @@ export default {
       const data = await req.json();
       this.burgers = data;
     },
+
     async getStatus() {
       const req = await fetch("http://localhost:3000/status");
       const data = await req.json();
       this.status = data;
     },
+
     async deletar(id) {
       const req = await fetch(`http://localhost:3000/burgers/${id}`, {
         method: "DELETE",
@@ -84,9 +86,7 @@ export default {
 
     async updateBurger(event, id) {
       const option = event.target.value;
-
       const dados = JSON.stringify({ status: option });
-
       axios({
         method: "patch",
         url: `http://localhost:3000/burgers/${id}`,
@@ -98,6 +98,7 @@ export default {
       });
     },
   },
+  
   mounted() {
     this.getStatus();
     this.getPedidos();

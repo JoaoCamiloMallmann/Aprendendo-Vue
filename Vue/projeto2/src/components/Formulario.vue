@@ -65,17 +65,7 @@ export default {
         pao: this.pao,
         status: this.status,
       };
-      /*
-      const req = await fetch("http://localhost:3000/burgers", {
-        method: "POST",
-        headers: { "Content-Type": "application JSON" },
-        body: dados,
-      });
-      const res = await req.json();
-      console.log(res);
 
-      this.$refs.form.reset();
-      */
       axios
         .post("http://localhost:3000/burgers", data)
         .then(function (response) {
@@ -88,7 +78,6 @@ export default {
     },
     
   },
-
   mounted() {
     this.getIngredientes();
   },

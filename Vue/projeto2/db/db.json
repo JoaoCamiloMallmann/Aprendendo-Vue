@@ -81,5 +81,13 @@
       "tipo": "Finalizado"
     }
   ],
-  "burgers": []
+  "burgers": [
+    {
+      "nome": "PHP",
+      "carne": "Alcatra",
+      "pao": "3 Queijos",
+      "status": "Solicitado",
+      "id": 1
+    }
+  ]
 }
